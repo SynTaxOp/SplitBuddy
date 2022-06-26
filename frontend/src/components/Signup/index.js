@@ -28,7 +28,7 @@ const Signup = () => {
               error={false}
               required
               id="outlined-required"
-              label="textField"
+              label="Email"
               onChange={(e) => setMail(e.target.value)}
             />
           </div>
