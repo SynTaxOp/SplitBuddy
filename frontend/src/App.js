@@ -1,24 +1,37 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+import LandingPage from "./components/LandingPage";
 function App() {
   const [username, setUsername] = useState();
-  const [pass, setPassword] = useState();
+  const [isLoggedin, setLoggedin] = useState(false);
 
-  const submitForm = () => {
-    console.log(username, pass);
-    fetch("http://localhost:8080/", {
-      method: "POST",
-      body: JSON.stringify({ email: username, password: pass }),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => console.log(data));
-  };
+  // const submitForm = () => {
+  //   console.log(username, pass);
+  //   fetch("http://localhost:8080/", {
+  //     method: "POST",
+  //     body: JSON.stringify({ email: username, password: pass }),
+  //     headers: { "Content-Type": "application/json" },
+  //   })
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data) => console.log(data));
+  // };
   return (
     <div className="App">
-      <form>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<LandingPage />}></Route>
+        </Routes>
+      </Router>
+      {/* <form>
         <label>Email</label>
         <input
           type="email"
@@ -34,7 +47,7 @@ function App() {
         <button type="submit" onClick={submitForm}>
           Submit
         </button>
-      </form>
+      </form> */}
     </div>
   );
 }

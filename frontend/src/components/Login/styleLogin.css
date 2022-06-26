@@ -1,0 +1,17 @@
+.textField-div{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    margin-bottom: 5%;
+}
+
+.button-div{
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.submit-btn{
+    height: 45px;
+    font-size: 18px;
+}
