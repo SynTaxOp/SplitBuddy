@@ -2,20 +2,38 @@ import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import "./styleLogin.css";
 const Login = () => {
-  const [email, setMail] = useState("");
+  const [username, setMail] = useState("");
   const [password, setPassword] = useState("");
+
+  const login = (e) => {
+    e.preventDefault();
+    const data = {
+      username,
+      password,
+    };
+    fetch("http://localhost:8080/users/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div>
-      <form>
+      <form onSubmit={login}>
         <div className="form-div">
           <div className="textField-div">
             <TextField
               fullWidth
-              type="email"
+              type="text"
               error={false}
               required
               id="outlined-required"
-              label="Email"
+              label="Username"
               onChange={(e) => setMail(e.target.value)}
             />
           </div>

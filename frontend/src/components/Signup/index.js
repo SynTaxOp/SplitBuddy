@@ -6,9 +6,30 @@ const Signup = () => {
   const [fullname, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const register = (e) => {
+    e.preventDefault();
+    const data = {
+      name: fullname,
+      email: email,
+      username: username,
+      password: password,
+    };
+    fetch("http://localhost:8080/users/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={register}>
         <div className="form-div">
           <div className="textField-div">
             <TextField
