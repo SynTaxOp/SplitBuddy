@@ -13,7 +13,14 @@ const registerUser = async(req,res) =>
     const user =  await new User({
           name,email,username,password  
     })
-    user.save();
+    user.save( (err,result) =>
+    {
+      if(err)
+      {
+        res.status(400)
+        throw new Error('Error,not entered in Database.')
+      }
+    });
     if(user)
     {
       res.status(201).json({
@@ -24,8 +31,35 @@ const registerUser = async(req,res) =>
     else
     {
       res.status(400)
-      throw new Error('User ban nhii paaya')
+      throw new Error('Error')
     }
 }
 
-module.exports = {registerUser}
+const loginUser = async(req,res) =>
+{
+    const {username,password} = req.body
+    const foundUser = await User.findOne({username});
+    if(foundUser)
+    {
+      console.log(foundUser)
+      if(await foundUser.matchPassword(password))
+      {
+        res.status(201).json({
+          _id : foundUser._id,
+          name : foundUser.name
+        })
+      }
+      else
+      {
+        res.status(400)
+      throw new Error('Incorrect Password')
+      }
+    }
+    else
+    {
+      res.status(400)
+      throw new Error('Username not registered.')
+    }
+}
+
+module.exports = {registerUser,loginUser}

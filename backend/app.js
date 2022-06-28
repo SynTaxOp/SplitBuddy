@@ -19,13 +19,5 @@ app.use(express.json());
 app.use('/users',userRouter)
 
 
-app.get("/", (req, res) => {
-  res.send("chal gya ka badla");
-});
-app.post("/", (req, res) => {
-  var name = req.body.email;
-  var pass = req.body.password;
-  console.log(name, pass);
-});
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, console.log(`chal gya at ${PORT}`));
+app.listen(PORT, console.log(`Running at port ${PORT}`));
