@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import "./styleLogin.css";
-const Login = () => {
+const Login = ({ setLoggedin, setUsername }) => {
   const [username, setMail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,6 +19,8 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setUsername(username);
+        setLoggedin(true);
       })
       .catch((err) => console.log(err));
   };
