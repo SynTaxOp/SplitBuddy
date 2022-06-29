@@ -19,8 +19,10 @@ const group1 = new Group({
   group_name: "S.sharks",
   members: ["Ravi", "Golu", "Shree"],
   transaction_data: [
-    { paidBy: "Ravi", paidFor: { 'Golu': '100', 'Shree': '200','Ravi':'1000' } },
-    { paidBy: "Golu", paidFor: { 'Golu': '100', 'Ravi': '500' } },
+    { paidBy: "Ravi", paidFor: { 'Golu': 100, 'Shree': 200, } },
+    { paidBy: "Golu", paidFor: { 'Ravi': 100 } },
+    { paidBy: "Shree", paidFor: { }}
+
   ],
 });
 
@@ -29,6 +31,10 @@ group1.save((err, result) => {
   if (err) {
     console.log(err);
   }
+  else
+  {
+    console.log(result)
+  }
 });
 
 // filter out transaction_data removed _id
@@ -36,17 +42,9 @@ var obj2 = group1.transaction_data.map(ele => ({
     'paidBy': ele.paidBy, 'paidFor': ele.paidFor
 }))
 
-console.log("obj2",obj2)
-const obj = []
-group1.transaction_data.forEach((element) =>
-    {
-      console.log({'paidBy': element.paidBy,'paidFor': element.paidFor })
-      obj.push({'paidBy': element.paidBy,'paidFor': element.paidFor })
-    }
-)
-console.log("obj1",obj)
+
 // Splitwise Testing
-const Split = Splitwise(obj)
+const Split = Splitwise(obj2)
 console.log("Split", Split)
 
 
