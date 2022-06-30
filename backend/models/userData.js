@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const {groupSchema} = require('./GroupData')
 const userSchema = new mongoose.Schema(
     {
       name: {
@@ -19,7 +20,8 @@ const userSchema = new mongoose.Schema(
       password: {
         type: String,
         required: true,
-      }
+      },
+      Groups : [groupSchema]
     }
 ); 
 userSchema.pre("save", async function (next) {
