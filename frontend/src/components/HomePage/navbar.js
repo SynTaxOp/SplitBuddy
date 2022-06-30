@@ -5,19 +5,23 @@ import {
   NavDropdown,
   Form,
   FormControl,
-  Button,
   Container,
 } from "react-bootstrap";
+import { Button } from "@mui/material";
+
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./styleHome.css";
 
 const NavbarSec = ({ setLoggedin }) => {
   const logout = () => setLoggedin(false);
   return (
     <div>
-      <Navbar bg="light" expand="lg">
+      <Navbar className="main-navbar" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#">SplitBuddy</Navbar.Brand>
+          <Navbar.Brand className="brand-navbar" href="#">
+            SplitBuddy
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -32,9 +36,11 @@ const NavbarSec = ({ setLoggedin }) => {
                 className="me-2"
                 aria-label="Search"
               />
-              <Button variant="outline-success">Search</Button>
+              <Button variant="outlined" className="search-btn">
+                Search
+              </Button>
             </Form>
-            <PowerSettingsNewIcon onClick={logout} />
+            <PowerSettingsNewIcon className="logout-btn" onClick={logout} />
           </Navbar.Collapse>
         </Container>
       </Navbar>

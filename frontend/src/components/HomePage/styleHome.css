@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=McLaren&display=swap');
+
+.main-navbar{
+    background-color: #bedada;
+}
+
+.brand-navbar{
+    font-family: 'McLaren', cursive;
+    font-size: 25px;
+}
+
+.logout-btn{
+    margin-left: 2%;
+    margin-right: 3%;
+    font-size: 30px;
+    color: rgb(22, 43, 62);
+    cursor:pointer;
+}
+
+.search-btn{
+    border-color: black !important;
+    color: black !important;
+}
+
+.welcome-msg{
+    font-family: 'McLaren', cursive;
+    margin-top: 2%;
+    font-size: 25px;
+    text-align: center;
+    color: #a8cece;
+    font-weight: bold;
+}
+.groups-div{
+    margin-top: 7%;
+}
+
+.group-header{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    display: grid;
+    grid-template-columns: 60% auto;
+    border-bottom: 3px solid rgb(190, 218, 218,0.6);
+}
+.my-groups-text{
+    font-family: 'McLaren', cursive;
+    font-size: 20px;
+    color: rgb(113, 113, 114);
+}
+.add-icon{
+    margin-left: auto;
+    font-size: 30px !important;
+    color: #a8cece;
+    cursor: pointer;
+}
+.img-div{
+    margin-top: 2%;
+    text-align: center;
+}
+
+.no-groups-img{
+    width: 25%;
+}
