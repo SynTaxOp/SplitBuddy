@@ -11,7 +11,7 @@ import LandingPage from "./components/LandingPage";
 import HomePage from "./components/HomePage";
 function App() {
   const [username, setUsername] = useState();
-  const [isLoggedin, setLoggedin] = useState(false);
+  const [isLoggedin, setLoggedin] = useState(true);
 
   return (
     <div className="App">

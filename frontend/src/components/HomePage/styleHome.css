@@ -50,7 +50,7 @@
 .add-icon{
     margin-left: auto;
     font-size: 30px !important;
-    color: #a8cece;
+    color: rgb(113, 113, 114);
     cursor: pointer;
 }
 .img-div{
@@ -60,4 +60,25 @@
 
 .no-groups-img{
     width: 25%;
+}
+.textField-divs{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    margin-top: 2%;
+    margin-bottom: 4%;
+
+}
+.textField-div-mem{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    margin-bottom: 2%;
+    
+}
+
+.max-limit-text{
+    font-size: 10px;
+    margin-top: 1%;
+    color: rgb(255, 0, 0,0.7);
 }

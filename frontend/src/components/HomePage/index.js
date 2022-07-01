@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import NavbarSec from "./navbar";
 import GroupSection from "./groupSection";
 import "./styleHome.css";
+import CreateGroupModal from "./createGroupModal";
 
 const HomePage = ({ username, setLoggedin }) => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div>
       <NavbarSec setLoggedin={setLoggedin} />
@@ -11,7 +14,10 @@ const HomePage = ({ username, setLoggedin }) => {
         <p className="welcome-msg">Welcome {username} &#128075;</p>
       </div>
       <div>
-        <GroupSection />
+        <GroupSection setShowModal={setShowModal} />
+      </div>
+      <div>
+        <CreateGroupModal showModal={showModal} setShowModal={setShowModal} />
       </div>
     </div>
   );
