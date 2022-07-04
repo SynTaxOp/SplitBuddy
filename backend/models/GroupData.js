@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const groupSchema = new mongoose.Schema({
-  group_name: { type: String, required: true, unique: true },
-  members: [String],
+  group_name: String,
+  members: {type:[String],default:[]},
   transaction_data: [
     {
       paidBy: String,

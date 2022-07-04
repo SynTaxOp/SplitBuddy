@@ -4,7 +4,6 @@ import "./styleLogin.css";
 const Login = ({ setLoggedin, setUsername }) => {
   const [username, setMail] = useState("");
   const [password, setPassword] = useState("");
-
   const login = (e) => {
     e.preventDefault();
     const data = {

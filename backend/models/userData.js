@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
-      Groups : [groupSchema]
+      Groups : {type:[groupSchema],default:[]}
     }
 ); 
 userSchema.pre("save", async function (next) {

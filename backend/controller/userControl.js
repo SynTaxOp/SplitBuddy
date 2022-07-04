@@ -18,7 +18,9 @@ const registerUser = async(req,res) =>
       if(err)
       {
         res.status(400)
+        console.log(err)
         throw new Error('Error,not entered in Database.')
+      
       }
     });
     if(user)

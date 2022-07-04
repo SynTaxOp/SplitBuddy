@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 
-const Signup = () => {
+const Signup = ({setUsername, setLoggedin}) => {
   const [email, setMail] = useState("");
   const [fullname, setName] = useState("");
-  const [username, setUsername] = useState("");
+  const [username, setUsername2] = useState("");
   const [password, setPassword] = useState("");
 
   const register = (e) => {
@@ -23,6 +23,8 @@ const Signup = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setUsername(username)
+        setLoggedin(true)
       })
       .catch((err) => console.log(err));
   };
@@ -61,7 +63,7 @@ const Signup = () => {
               required
               id="outlined-required"
               label="Username"
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setUsername2(e.target.value)}
             />
           </div>
           <div className="textField-div">
