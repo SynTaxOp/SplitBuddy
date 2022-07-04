@@ -11,9 +11,13 @@ const createInput = (arr, setarr, input, setInput, e) => {
   setarr(arr);
   setInput(!input);
 };
-const handleInputChange = async (e, setMemberArray) => {
+const handleInputChange = async (e, setMemberArray, timer, setTimer, num) => {
   const name = await e.target.value;
-  setMemberArray((arr) => [...arr, name]);
+  clearTimeout(timer);
+  const newTimer = setTimeout(() => {
+    setMemberArray((arr) => [...arr, name]);
+  }, 500);
+  setTimer(newTimer);
 };
 function GroupModal(props) {
   return (
@@ -74,7 +78,13 @@ function GroupModal(props) {
                       id="outlined-required"
                       label={label}
                       onChange={(e) =>
-                        handleInputChange(e, props.setMemberArray)
+                        handleInputChange(
+                          e,
+                          props.setMemberArray,
+                          props.timer,
+                          props.setTimer,
+                          num
+                        )
                       }
                     />
                   </div>
@@ -97,6 +107,7 @@ function GroupModal(props) {
 }
 
 const CreateGroupModal = ({ showModal, setShowModal }) => {
+  const [timer, setTimer] = useState(null);
   const [memberArray, setMemberArray] = useState([]);
   const [showInput, setInput] = useState(false);
   const [arr, setarr] = useState([]);
@@ -118,6 +129,8 @@ const CreateGroupModal = ({ showModal, setShowModal }) => {
         setInput={setInput}
         setMemberArray={setMemberArray}
         memberArray={memberArray}
+        timer={timer}
+        setTimer={setTimer}
       />
     </div>
   );
