@@ -13,7 +13,7 @@ const registerUser = async(req,res) =>
     const user =  await new User({
           name,email,username,password  
     })
-    user.save( (err,result) =>
+    user.save( (err) =>
     {
       if(err)
       {

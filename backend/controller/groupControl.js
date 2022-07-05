@@ -2,42 +2,30 @@ const User = require("../models/userData");
 const { Group } = require("../models/GroupData");
 
 const addGroup = async (req, res) => {
-  const { user_name, group_name, members } = req.body;
+  const { username, group_name, members } = req.body;
 
-  var prevarray = await User.findOne({ username:user_name }).Groups;
-  
   const new_group = new Group({
     group_name,
     members,
     transaction_data: [],
   });
-  if(prevarray==undefined)
-  {
-  User.updateOne({username:user_name},{Groups:[new_group]},(err,res)=>{
-    if(err)
-    {
-      console.log(err)
+  User.updateOne({ username }, { $push: { Groups: [new_group] } }, (err) => {
+    if (err) {
+      console.log("Group not added to user.");
+      console.log(err);
     }
-    else
-    {
-      console.log()
-    }
-  })
-  }
-  else
-  {
-    prevarray.push(new_group);
-    User.updateOne({username:user_name},{Groups:prevarray},(err,res)=>{
-      if(err)
-      {
-        console.log(err)
-      }
-      else
-      {
-        console.log(res)
-      }
-    })
+  });
+  const updatedUser = await User.findOne({ username });
+  if (updatedUser) {
+    res.status(200).json({
+      _id: updatedUser._id,
+      username: updatedUser.username,
+      Groups: updatedUser.Groups,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Error");
   }
 };
 
-module.exports = {addGroup}
+module.exports = { addGroup };
