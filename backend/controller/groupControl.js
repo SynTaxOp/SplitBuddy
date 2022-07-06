@@ -28,4 +28,18 @@ const addGroup = async (req, res) => {
   }
 };
 
-module.exports = { addGroup };
+const displayGroup = async (req, res) => {
+  const username = req.query.username;
+  const user = await User.findOne({ username });
+  if (user) {
+    res.status(200).json({
+      _id: user._id,
+      username: user.username,
+      Groups: user.Groups,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Error");
+  }
+};
+module.exports = { addGroup, displayGroup };

@@ -98,7 +98,7 @@ function GroupModal(props) {
         <Button onClick={props.onHide} color="error">
           Close
         </Button>
-        <Button onClick={() => console.log(props.memberArray)} type="submit">
+        <Button onClick={props.registergroup} type="submit">
           Create
         </Button>
       </Modal.Footer>
@@ -106,16 +106,37 @@ function GroupModal(props) {
   );
 }
 
-const CreateGroupModal = ({ showModal, setShowModal }) => {
-  const [timer, setTimer] = useState(null);
+const CreateGroupModal = ({ showModal, setShowModal, username }) => {
+  var memarr = [];
   const [memberArray, setMemberArray] = useState([]);
   const [showInput, setInput] = useState(false);
   const [arr, setarr] = useState([]);
   const [groupName, setGroupName] = useState();
   const onClose = (arr) => {
+    setMemberArray([]);
     arr = [];
     setInput(false);
     setShowModal(false);
+  };
+  const registergroup = (e) => {
+    e.preventDefault();
+    const data = {
+      username: username,
+      group_name: groupName,
+      members: memberArray,
+    };
+    setMemberArray([]);
+
+    fetch("http://localhost:8080/groups/addGroup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div>
@@ -129,8 +150,7 @@ const CreateGroupModal = ({ showModal, setShowModal }) => {
         setInput={setInput}
         setMemberArray={setMemberArray}
         memberArray={memberArray}
-        timer={timer}
-        setTimer={setTimer}
+        registergroup={registergroup}
       />
     </div>
   );
