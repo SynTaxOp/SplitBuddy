@@ -1,21 +1,42 @@
 import React, { useState } from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-const GroupSection = ({ setShowModal }) => {
+import { Button } from "@mui/material";
+import GroupCard from "./groupCard";
+
+const GroupSection = ({ setShowModal, groups }) => {
   return (
     <div className="groups-div">
       <div className="group-header">
         <p className="my-groups-text">My groups</p>
-        <AddCircleIcon
+        <Button
+          variant="contained"
           className="add-icon"
           onClick={() => setShowModal(true)}
-        />
+        >
+          Add new group
+        </Button>
       </div>
-      <div className="img-div">
-        <img
-          className="no-groups-img"
-          src={require("../images/no_groups.png")}
-        ></img>
-      </div>
+      {!groups.length > 0 ? (
+        <div className="img-div">
+          <img
+            className="no-groups-img"
+            src={require("../images/no_groups.png")}
+          ></img>
+        </div>
+      ) : (
+        <div>
+          {groups.map((element) => {
+            return (
+              <div>
+                <GroupCard
+                  title={element.group_name}
+                  members={element.members}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

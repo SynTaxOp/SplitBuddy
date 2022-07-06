@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import "./styleLogin.css";
-const Login = ({ setLoggedin, setUsername }) => {
+const Login = ({ setLoggedin, setUsername, groups, setGroups }) => {
   const [username, setMail] = useState("");
   const [password, setPassword] = useState("");
   const login = (e) => {
@@ -22,6 +22,21 @@ const Login = ({ setLoggedin, setUsername }) => {
         setLoggedin(true);
       })
       .catch((err) => console.log(err));
+
+    fetch("http://localhost:8080/groups/displayGroup?username=" + username, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data.Groups);
+        var grp = data.Groups;
+        console.log(grp[0]);
+        console.log(typeof grp);
+        groups = grp;
+        console.log("groups", groups);
+        setGroups(groups);
+      });
   };
   return (
     <div>

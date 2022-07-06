@@ -12,6 +12,7 @@ import HomePage from "./components/HomePage";
 function App() {
   const [username, setUsername] = useState();
   const [isLoggedin, setLoggedin] = useState(false);
+  var [groups, setGroups] = useState();
 
   return (
     <div className="App">
@@ -25,6 +26,8 @@ function App() {
                 <LandingPage
                   setLoggedin={setLoggedin}
                   setUsername={setUsername}
+                  groups={groups}
+                  setGroups={setGroups}
                 />
               }
             ></Route>
@@ -35,7 +38,11 @@ function App() {
               exact
               path="/"
               element={
-                <HomePage username={username} setLoggedin={setLoggedin} />
+                <HomePage
+                  username={username}
+                  setLoggedin={setLoggedin}
+                  groups={groups}
+                />
               }
             ></Route>
           </Routes>

@@ -48,10 +48,13 @@
     color: rgb(113, 113, 114);
 }
 .add-icon{
-    margin-left: auto;
-    font-size: 30px !important;
-    color: rgb(113, 113, 114);
+    margin-left: auto !important;
+    background-color: #a8cece !important;
     cursor: pointer;
+    width: 60%;
+    height: 40px;
+    margin-bottom: 2% !important;
+    font-weight: bold !important;
 }
 .img-div{
     margin-top: 2%;

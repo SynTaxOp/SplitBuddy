@@ -5,7 +5,7 @@ import Login from "../Login";
 import Signup from "../Signup";
 import "./styleLanding.css";
 
-const LandingPage = ({ setLoggedin, setUsername }) => {
+const LandingPage = ({ setLoggedin, setUsername, groups, setGroups }) => {
   const [value, setValue] = useState("1");
 
   return (
@@ -26,7 +26,12 @@ const LandingPage = ({ setLoggedin, setUsername }) => {
             </Tabs>
           </Box>
           <TabPanel value="1">
-            <Login setLoggedin={setLoggedin} setUsername={setUsername} />
+            <Login
+              setLoggedin={setLoggedin}
+              setUsername={setUsername}
+              groups={groups}
+              setGroups={setGroups}
+            />
           </TabPanel>
           <TabPanel value="2">
             <Signup setLoggedin={setLoggedin} setUsername={setUsername} />
