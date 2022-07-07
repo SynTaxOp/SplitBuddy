@@ -20,3 +20,7 @@
     box-shadow: 5px 5px 5px rgb(113, 113, 111,0.8);
     background-color: white;
 }
+
+.loader{
+    margin-top: 25vh !important;
+}

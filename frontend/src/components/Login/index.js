@@ -1,9 +1,18 @@
 import React, { useState } from "react";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Snackbar, Alert } from "@mui/material";
 import "./styleLogin.css";
-const Login = ({ setLoggedin, setUsername, getGroups }) => {
+const Login = ({ setLoggedin, setUsername, getGroups, setLoader }) => {
   const [username, setMail] = useState("");
   const [password, setPassword] = useState("");
+  const [open, setOpen] = useState(false);
+  const [errMsg, setMsg] = useState();
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   const login = (e) => {
     e.preventDefault();
@@ -15,15 +24,26 @@ const Login = ({ setLoggedin, setUsername, getGroups }) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        getGroups(username);
-        setUsername(username);
-        setLoggedin(true);
-      })
-      .catch((err) => console.log(err));
+    }).then((res) => {
+      if (res.status == "201") {
+        res.json().then((data) => {
+          console.log(data);
+          getGroups(username);
+          setUsername(username);
+          setLoader(true);
+          setTimeout(() => {
+            setLoader(false);
+            setLoggedin(true);
+          }, 3000);
+        });
+      } else {
+        res.json().then((data) => {
+          console.log(data);
+          setMsg(data.message);
+          setOpen(true);
+        });
+      }
+    });
   };
   return (
     <div>
@@ -63,6 +83,20 @@ const Login = ({ setLoggedin, setUsername, getGroups }) => {
           </div>
         </div>
       </form>
+
+      <div className="errorDiv">
+        <Snackbar
+          open={open}
+          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          autoHideDuration={2000}
+          className="errorDiv"
+          onClose={handleClose}
+        >
+          <Alert className="errorDiv" severity="error">
+            {errMsg}
+          </Alert>
+        </Snackbar>
+      </div>
     </div>
   );
 };

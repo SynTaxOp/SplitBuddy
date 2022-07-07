@@ -128,17 +128,19 @@ const CreateGroupModal = ({ showModal, setShowModal, username }) => {
       members: memberArray,
     };
     setMemberArray([]);
-
-    fetch("http://localhost:8080/groups/addGroup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+    if (data.group_name != "" && data.members.length > 0) {
+      fetch("http://localhost:8080/groups/addGroup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       })
-      .catch((err) => console.log(err));
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          onClose(arr);
+        })
+        .catch((err) => console.log(err));
+    }
   };
   return (
     <div>

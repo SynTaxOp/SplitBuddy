@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 
-const Signup = ({ setUsername, setLoggedin, getGroups }) => {
+const Signup = ({ setUsername, setLoggedin, getGroups, setLoader }) => {
   const [email, setMail] = useState("");
   const [fullname, setName] = useState("");
   const [username, setUsername2] = useState("");
@@ -25,7 +25,11 @@ const Signup = ({ setUsername, setLoggedin, getGroups }) => {
         console.log(data);
         setUsername(username);
         getGroups(username);
-        setLoggedin(true);
+        setLoader(true);
+        setTimeout(() => {
+          setLoader(false);
+          setLoggedin(true);
+        }, 3000);
       })
       .catch((err) => console.log(err));
   };
