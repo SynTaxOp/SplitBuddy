@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import NavbarSec from "./navbar";
 import GroupSection from "./groupSection";
 import "./styleHome.css";

@@ -13,12 +13,14 @@ const createInput = (arr, setarr, input, setInput, memArray, e) => {
   setarr(arr);
   setInput(!input);
 };
+
 const handleInputChange = async (e, setMemberArray, memArray, num) => {
   const name = await e.target.value;
   memArray[num - 1] = name;
   setMemberArray(memArray);
   console.log(memArray);
 };
+
 function GroupModal(props) {
   return (
     <Modal

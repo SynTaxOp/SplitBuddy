@@ -27,7 +27,7 @@
     margin-top: 2%;
     font-size: 25px;
     text-align: center;
-    color: #a8cece;
+    color:#5b8686;
     font-weight: bold;
 }
 .groups-div{
@@ -49,7 +49,7 @@
 }
 .add-icon{
     margin-left: auto !important;
-    background-color: #a8cece !important;
+    background-color:#5b8686 !important;
     cursor: pointer;
     width: 60%;
     height: 40px;
@@ -96,29 +96,33 @@
     margin-top: 1%;
     height: 10vh;
     cursor: pointer;
-    box-shadow: 2px 2px 5px #a8cece;
+    box-shadow: 3px 3px 5px #a8cece;
 }
-.card-div:hover{
+.card-div:hover {
+    background-color: #d5e2e2;
+    color: white !important;
     box-shadow: none;
 }
 
 .card-content{
     display: grid;
     grid-template-columns: 40% auto;
-    color:#5b8686;
 }
+
 .group-icon{
     font-size: 30px !important;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2.5vh;
+    color:#5b8686;
+
 }
 .group-title{
-    font-size: 18px;
+    font-size: 15px;
     font-family: 'McLaren', cursive;
     text-transform: uppercase;
     color: rgb(113, 113, 114);
-    padding-top: 2.5vh;
+    padding-top: 3vh;
 
 }
 

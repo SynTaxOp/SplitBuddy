@@ -1,14 +1,6 @@
 import React from "react";
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Container,
-} from "react-bootstrap";
+import { Navbar, Nav, Form, FormControl, Container } from "react-bootstrap";
 import { Button } from "@mui/material";
-
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styleHome.css";

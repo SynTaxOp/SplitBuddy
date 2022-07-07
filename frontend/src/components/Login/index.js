@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import "./styleLogin.css";
-const Login = ({ setLoggedin, setUsername, groups, setGroups, getGroups }) => {
+const Login = ({ setLoggedin, setUsername, getGroups }) => {
   const [username, setMail] = useState("");
   const [password, setPassword] = useState("");
 

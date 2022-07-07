@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
+import React from "react";
 import { Button } from "@mui/material";
 import GroupCard from "./groupCard";
 
