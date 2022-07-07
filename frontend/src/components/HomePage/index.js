@@ -6,22 +6,6 @@ import CreateGroupModal from "./createGroupModal";
 
 const HomePage = ({ username, setLoggedin, groups }) => {
   const [showModal, setShowModal] = useState(false);
-  // var [groups, setGroups] = useState();
-  // useEffect(() => {
-  //   fetch("http://localhost:8080/groups/displayGroup?username=" + username, {
-  //     method: "GET",
-  //     headers: { "Content-Type": "application/json" },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       // console.log(data.Groups);
-  //       var grp = data.Groups;
-  //       console.log(grp[0]);
-  //       console.log(typeof grp);
-  //       groups = grp;
-  //       console.log(groups);
-  //     });
-  // }, [groups]);
   return (
     <div>
       <NavbarSec setLoggedin={setLoggedin} />

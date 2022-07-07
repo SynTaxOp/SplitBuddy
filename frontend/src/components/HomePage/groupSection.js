@@ -24,7 +24,7 @@ const GroupSection = ({ setShowModal, groups }) => {
           ></img>
         </div>
       ) : (
-        <div>
+        <div className="userGroups">
           {groups.map((element) => {
             return (
               <div>

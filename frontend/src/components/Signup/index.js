@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 
-const Signup = ({setUsername, setLoggedin}) => {
+const Signup = ({ setUsername, setLoggedin, getGroups }) => {
   const [email, setMail] = useState("");
   const [fullname, setName] = useState("");
   const [username, setUsername2] = useState("");
@@ -23,8 +23,9 @@ const Signup = ({setUsername, setLoggedin}) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setUsername(username)
-        setLoggedin(true)
+        setUsername(username);
+        getGroups(username);
+        setLoggedin(true);
       })
       .catch((err) => console.log(err));
   };

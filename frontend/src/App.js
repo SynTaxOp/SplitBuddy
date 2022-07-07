@@ -1,18 +1,13 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import LandingPage from "./components/LandingPage";
 import HomePage from "./components/HomePage";
 function App() {
   const [username, setUsername] = useState();
   const [isLoggedin, setLoggedin] = useState(false);
-  var [groups, setGroups] = useState();
+  var [groups, setGroups] = useState([]);
 
   return (
     <div className="App">
@@ -28,6 +23,7 @@ function App() {
                   setUsername={setUsername}
                   groups={groups}
                   setGroups={setGroups}
+                  username={username}
                 />
               }
             ></Route>

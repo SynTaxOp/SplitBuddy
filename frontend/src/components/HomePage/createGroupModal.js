@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Button, TextField } from "@mui/material";
 
-const createInput = (arr, setarr, input, setInput, e) => {
+const createInput = (arr, setarr, input, setInput, memArray, e) => {
   const num = e.target.value;
+  memArray = Array(num).fill("");
+  console.log(memArray);
   arr = [];
   for (let i = 1; i <= num; i++) {
     arr.push(i);
@@ -11,13 +13,11 @@ const createInput = (arr, setarr, input, setInput, e) => {
   setarr(arr);
   setInput(!input);
 };
-const handleInputChange = async (e, setMemberArray, timer, setTimer, num) => {
+const handleInputChange = async (e, setMemberArray, memArray, num) => {
   const name = await e.target.value;
-  clearTimeout(timer);
-  const newTimer = setTimeout(() => {
-    setMemberArray((arr) => [...arr, name]);
-  }, 500);
-  setTimer(newTimer);
+  memArray[num - 1] = name;
+  setMemberArray(memArray);
+  console.log(memArray);
 };
 function GroupModal(props) {
   return (
@@ -59,6 +59,7 @@ function GroupModal(props) {
                   props.setarr,
                   props.showInput,
                   props.setInput,
+                  props.memberArray,
                   e
                 )
               }
@@ -81,8 +82,7 @@ function GroupModal(props) {
                         handleInputChange(
                           e,
                           props.setMemberArray,
-                          props.timer,
-                          props.setTimer,
+                          props.memberArray,
                           num
                         )
                       }
@@ -107,7 +107,7 @@ function GroupModal(props) {
 }
 
 const CreateGroupModal = ({ showModal, setShowModal, username }) => {
-  var memarr = [];
+  var memArray = [];
   const [memberArray, setMemberArray] = useState([]);
   const [showInput, setInput] = useState(false);
   const [arr, setarr] = useState([]);
@@ -151,6 +151,7 @@ const CreateGroupModal = ({ showModal, setShowModal, username }) => {
         setMemberArray={setMemberArray}
         memberArray={memberArray}
         registergroup={registergroup}
+        memArray={memArray}
       />
     </div>
   );

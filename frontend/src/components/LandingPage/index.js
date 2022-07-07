@@ -7,7 +7,22 @@ import "./styleLanding.css";
 
 const LandingPage = ({ setLoggedin, setUsername, groups, setGroups }) => {
   const [value, setValue] = useState("1");
-
+  const getGroups = (username) => {
+    fetch("http://localhost:8080/groups/displayGroup?username=" + username, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data.Groups);
+        var grp = data.Groups;
+        console.log(grp[0]);
+        console.log(typeof grp);
+        groups = grp;
+        console.log("groups", groups);
+        setGroups(groups);
+      });
+  };
   return (
     <div className="main-container">
       <div className="tab-container">
@@ -31,10 +46,15 @@ const LandingPage = ({ setLoggedin, setUsername, groups, setGroups }) => {
               setUsername={setUsername}
               groups={groups}
               setGroups={setGroups}
+              getGroups={getGroups}
             />
           </TabPanel>
           <TabPanel value="2">
-            <Signup setLoggedin={setLoggedin} setUsername={setUsername} />
+            <Signup
+              setLoggedin={setLoggedin}
+              setUsername={setUsername}
+              getGroups={getGroups}
+            />
           </TabPanel>
         </TabContext>
       </div>

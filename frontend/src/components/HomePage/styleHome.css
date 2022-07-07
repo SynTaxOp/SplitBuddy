@@ -85,3 +85,40 @@
     margin-top: 1%;
     color: rgb(255, 0, 0,0.7);
 }
+.userGroups{
+    margin-top: 3%;
+}
+.card-div{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 2px solid #a8cece;
+    margin-top: 1%;
+    height: 10vh;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px #a8cece;
+}
+.card-div:hover{
+    box-shadow: none;
+}
+
+.card-content{
+    display: grid;
+    grid-template-columns: 40% auto;
+    color:#5b8686;
+}
+.group-icon{
+    font-size: 30px !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.5vh;
+}
+.group-title{
+    font-size: 18px;
+    font-family: 'McLaren', cursive;
+    text-transform: uppercase;
+    color: rgb(113, 113, 114);
+    padding-top: 2.5vh;
+
+}
+
