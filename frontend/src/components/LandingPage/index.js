@@ -7,7 +7,13 @@ import Login from "../Login";
 import Signup from "../Signup";
 import "./styleLanding.css";
 
-const LandingPage = ({ setLoggedin, setUsername, groups, setGroups }) => {
+const LandingPage = ({
+  setLoggedin,
+  setUsername,
+  groups,
+  setGroups,
+  getGroups,
+}) => {
   const [value, setValue] = useState("1");
   const [loader, setLoader] = useState(false);
   const defaultOptions = {
@@ -19,22 +25,6 @@ const LandingPage = ({ setLoggedin, setUsername, groups, setGroups }) => {
     },
   };
 
-  const getGroups = (username) => {
-    fetch("http://localhost:8080/groups/getGroups?username=" + username, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data.Groups);
-        var grp = data.Groups;
-        console.log(grp[0]);
-        console.log(typeof grp);
-        groups = grp;
-        console.log("groups", groups);
-        setGroups(groups);
-      });
-  };
   return (
     <>
       {!loader ? (

@@ -4,7 +4,14 @@ import GroupSection from "./groupSection";
 import "./styleHome.css";
 import CreateGroupModal from "./createGroupModal";
 
-const HomePage = ({ username, setLoggedin, groups, members, setMembers }) => {
+const HomePage = ({
+  username,
+  setLoggedin,
+  groups,
+  members,
+  setMembers,
+  getGroups,
+}) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <div>
@@ -27,6 +34,7 @@ const HomePage = ({ username, setLoggedin, groups, members, setMembers }) => {
           showModal={showModal}
           setShowModal={setShowModal}
           username={username}
+          getGroups={getGroups}
         />
       </div>
     </div>

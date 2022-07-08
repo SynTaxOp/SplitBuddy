@@ -108,7 +108,7 @@ function GroupModal(props) {
   );
 }
 
-const CreateGroupModal = ({ showModal, setShowModal, username }) => {
+const CreateGroupModal = ({ showModal, setShowModal, username, getGroups }) => {
   var memArray = [];
   const [memberArray, setMemberArray] = useState([]);
   const [showInput, setInput] = useState(false);
@@ -141,6 +141,7 @@ const CreateGroupModal = ({ showModal, setShowModal, username }) => {
         })
         .catch((err) => console.log(err));
     }
+    getGroups(username);
   };
   return (
     <div>
