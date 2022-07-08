@@ -9,7 +9,7 @@ function App() {
   const [username, setUsername] = useState();
   const [isLoggedin, setLoggedin] = useState(false);
   var [groups, setGroups] = useState([]);
-
+  var [members, setMembers] = useState([]);
   return (
     <div className="App">
       <Router>
@@ -51,10 +51,16 @@ function App() {
                   username={username}
                   setLoggedin={setLoggedin}
                   groups={groups}
+                  memebers={members}
+                  setMembers={setMembers}
                 />
               }
             ></Route>
-            <Route exact path="/groups/:title" element={<GroupsPage />}></Route>
+            <Route
+              exact
+              path="/groups/:title"
+              element={<GroupsPage members={members} />}
+            ></Route>
           </Routes>
         )}
       </Router>

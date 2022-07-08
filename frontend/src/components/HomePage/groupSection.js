@@ -2,7 +2,13 @@ import React from "react";
 import { Button } from "@mui/material";
 import GroupCard from "./groupCard";
 
-const GroupSection = ({ setShowModal, groups }) => {
+const GroupSection = ({
+  setShowModal,
+  groups,
+  username,
+  members,
+  setMembers,
+}) => {
   return (
     <div className="groups-div">
       <div className="group-header">
@@ -29,7 +35,9 @@ const GroupSection = ({ setShowModal, groups }) => {
               <div>
                 <GroupCard
                   title={element.group_name}
-                  members={element.members}
+                  members={members}
+                  username={username}
+                  setMembers={setMembers}
                 />
               </div>
             );

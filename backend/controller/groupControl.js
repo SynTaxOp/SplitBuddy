@@ -46,11 +46,10 @@ const getGroups = async (req, res) => {
 const getMembers = async (req, res) => {
   const username = req.query.username;
   const group_name = req.query.title;
-  // const user = await User.findOne({ username });
   const group = await User.findOne(
     { username },
     { Groups: { $elemMatch: { group_name } } },
-    (err, result) => {
+    (err) => {
       if (err) {
         console.log(err);
       }
