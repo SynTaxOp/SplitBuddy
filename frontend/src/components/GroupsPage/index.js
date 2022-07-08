@@ -3,11 +3,11 @@ import NavbarSec from "../HomePage/navbar";
 import { Avatar } from "@mui/material";
 import { useParams } from "react-router";
 import "./styleGroups.css";
-const GroupsPage = ({ members }) => {
+const GroupsPage = ({ members, setLoggedin }) => {
   const { title } = useParams();
   return (
     <div>
-      <NavbarSec />
+      <NavbarSec setLoggedin={setLoggedin} />
       <div className="main-group-div">
         <div className="group-content">
           <p className="groupname-text">👭 {title} 👬</p>

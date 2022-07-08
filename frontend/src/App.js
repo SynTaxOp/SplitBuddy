@@ -29,7 +29,7 @@ function App() {
             ></Route>
             <Route
               exact
-              path="/groups"
+              path="/groups/:title"
               element={
                 <LandingPage
                   setLoggedin={setLoggedin}
@@ -59,7 +59,9 @@ function App() {
             <Route
               exact
               path="/groups/:title"
-              element={<GroupsPage members={members} />}
+              element={
+                <GroupsPage members={members} setLoggedin={setLoggedin} />
+              }
             ></Route>
           </Routes>
         )}
