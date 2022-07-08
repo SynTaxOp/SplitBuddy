@@ -1,0 +1,30 @@
+.main-group-div{
+    display: grid;
+    grid-template-columns: 70% auto;
+}
+
+.groupname-text{
+    text-align: center;
+    margin-top: 2%;
+    font-size: 30px;
+    font-family: 'McLaren', cursive;
+    text-transform: uppercase;
+    color:#5b8686;
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+
+.group-content{
+    height: 90.5vh;
+    border-right: 2px solid rgb(91, 134, 134,0.6);
+}
+.member-text{
+    font-family: 'McLaren', cursive;
+    margin-top: 5%;
+    font-size: 25px;
+    text-align: center;
+    color:#5b8686;
+    font-weight: bold;
+
+}

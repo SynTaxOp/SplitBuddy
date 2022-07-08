@@ -1,7 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const { addGroup, displayGroup } = require("../controller/groupControl");
+const {
+  addGroup,
+  getGroups,
+  getMembers,
+} = require("../controller/groupControl");
 
 router.route("/addGroup").post(addGroup);
-router.route("/displayGroup").get(displayGroup);
+router.route("/getGroups").get(getGroups);
+router.route("/getMembers").get(getMembers);
+
 module.exports = router;

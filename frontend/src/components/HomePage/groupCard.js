@@ -5,10 +5,12 @@ import "./styleHome.css";
 
 const GroupCard = ({ title, members }) => {
   const navigate = useNavigate();
+  const showgroupsPage = () => {};
   return (
     <div className="card-div" onClick={() => navigate(`/groups/${title}`)}>
       <div className="card-content">
-        <GroupIcon className="group-icon" />
+        {/* <GroupIcon className="group-icon" /> */}
+        <div className="group-icon">👥</div>
         <p className="group-title">{title}</p>
       </div>
     </div>

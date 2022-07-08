@@ -20,7 +20,7 @@ const LandingPage = ({ setLoggedin, setUsername, groups, setGroups }) => {
   };
 
   const getGroups = (username) => {
-    fetch("http://localhost:8080/groups/displayGroup?username=" + username, {
+    fetch("http://localhost:8080/groups/getGroups?username=" + username, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })

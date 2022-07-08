@@ -28,7 +28,7 @@ const addGroup = async (req, res) => {
   }
 };
 
-const displayGroup = async (req, res) => {
+const getGroups = async (req, res) => {
   const username = req.query.username;
   const user = await User.findOne({ username });
   if (user) {
@@ -42,4 +42,28 @@ const displayGroup = async (req, res) => {
     throw new Error("Error");
   }
 };
-module.exports = { addGroup, displayGroup };
+
+const getMembers = async (req, res) => {
+  const username = req.query.username;
+  const group_name = req.query.title;
+  // const user = await User.findOne({ username });
+  const group = await User.findOne(
+    { username },
+    { Groups: { $elemMatch: { group_name } } },
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+    }
+  ).clone();
+  if (group) {
+    res.status(200).json({
+      members: group.Groups[0].members,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Error");
+  }
+};
+
+module.exports = { addGroup, getGroups, getMembers };
