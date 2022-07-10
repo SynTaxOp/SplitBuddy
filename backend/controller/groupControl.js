@@ -7,7 +7,7 @@ const addGroup = async (req, res) => {
   const new_group = new Group({
     group_name,
     members,
-    transaction_data: [],
+    transaction_data: [{paidBy : 'Ravi',paidFor : {'Shree':200,'Kartik' : 100}},{paidBy : 'Golu',paidFor : {'Shree':200,'Kartik' : 100}}],
   });
   User.updateOne({ username }, { $push: { Groups: [new_group] } }, (err) => {
     if (err) {
@@ -56,6 +56,7 @@ const getMembers = async (req, res) => {
     }
   ).clone();
   if (group) {
+    console.log(group);
     res.status(200).json({
       members: group.Groups[0].members,
     });

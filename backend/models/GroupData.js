@@ -5,7 +5,7 @@ const groupSchema = new mongoose.Schema({
   transaction_data: [
     {
       paidBy: String,
-      paidFor: mongoose.Schema.Types.Mixed,
+      paidFor: {type: mongoose.Schema.Types.Mixed }
     },
   ],
 });

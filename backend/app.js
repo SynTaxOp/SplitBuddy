@@ -12,20 +12,25 @@ connectDB();
 const User = require("./models/userData");
 const userRouter = require("./routes/userRouter");
 const groupRouter = require("./routes/groupRouter");
+const transactionRouter = require("./routes/transactionRouter");
 
 const { Group } = require("./models/GroupData");
 
-//test data for group
-// const group1 = new Group({
-//   group_name: "S.sharks",
-//   members: ["Ravi", "Golu", "Shree"],
-//   transaction_data: [
-//     { paidBy: "Ravi", paidFor: { 'Golu': 100, 'Shree': 200, } },
-//     { paidBy: "Golu", paidFor: { 'Ravi': 100 } },
-//     { paidBy: "Shree", paidFor: { }}
+// test data for group
+const group1 = new Group({
+  group_name: "S.sharks",
+  members: ["Ravi", "Golu", "Shree"],
+  transaction_data: [
+    { paidBy: "Ravi", paidFor: { 'Golu': 100, 'Shree': 200, } },
+    { paidBy: "Golu", paidFor: { 'Ravi': 100 } },
+    { paidBy: "Shree", paidFor: { }}
 
-//   ],
-// });
+  ],
+});
+// group1.transaction_data[0].paidFor['Ravi'] += 20;
+group1.transaction_data[0].paidFor['Ravi']=20;
+// console.log(group1.transaction_data[0]);
+
 
 // const group2 = new Group({
 //   group_name: "ABC",
@@ -46,7 +51,7 @@ const group3 = new Group({
 
   ],
 });
-console.log(group3.transaction_data[1].paidFor['Shree']==undefined);
+// console.log(group3.transaction_data[1].paidFor['Shree']==undefined);
 
 // const user1 = new User({
 //   name : 'Harshita',
@@ -91,6 +96,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use("/users", userRouter);
 app.use("/groups", groupRouter);
+app.use("/transaction",transactionRouter);
 
 
 const PORT = process.env.PORT || 8080;
