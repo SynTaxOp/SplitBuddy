@@ -81,7 +81,11 @@ function App() {
               exact
               path="/groups/:title"
               element={
-                <GroupsPage members={members} setLoggedin={setLoggedin} />
+                <GroupsPage
+                  members={members}
+                  setLoggedin={setLoggedin}
+                  username={username}
+                />
               }
             ></Route>
           </Routes>

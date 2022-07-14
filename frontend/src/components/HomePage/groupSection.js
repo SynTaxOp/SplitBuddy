@@ -25,7 +25,7 @@ const GroupSection = ({
         <div className="img-div">
           <img
             className="no-groups-img"
-            src={require("../images/no_groups.png")}
+            src={require("../assets/no_groups.png")}
           ></img>
         </div>
       ) : (

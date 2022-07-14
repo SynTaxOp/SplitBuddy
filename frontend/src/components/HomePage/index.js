@@ -13,6 +13,7 @@ const HomePage = ({
   getGroups,
 }) => {
   const [showModal, setShowModal] = useState(false);
+
   return (
     <div>
       <NavbarSec setLoggedin={setLoggedin} />
