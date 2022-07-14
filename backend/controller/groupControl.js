@@ -66,4 +66,89 @@ const getMembers = async (req, res) => {
   }
 };
 
-module.exports = { addGroup, getGroups, getMembers };
+const deleteGroup = async (req,res) => 
+{
+    const username = req.query.username;
+    const group_name = req.query.group_name;
+    const user = await User.findOne({username});
+    var index = -1;
+    for(let i=0;i<user.Groups.length;i++)
+    {
+      if(user.Groups[i].group_name == group_name)
+      {
+        index = i;
+        break;
+      }
+    }
+    var updated_Groups = user.Groups;
+    updated_Groups.splice(index,1);
+    User.updateOne({username},
+      {Groups : updated_Groups},(err)=>{
+        if(err)
+        {
+          console.log(err);
+        }
+        else
+        {
+          console.log("Group deleted successfully.")
+        }
+      })
+}
+
+const addMember = async (req,res) => 
+{
+    const {username,group_name,member_name} = req.body
+    const user = await User.findOne({username});
+    var index = -1;
+    for(let i=0;i<user.Groups.length;i++)
+    {
+      if(user.Groups[i].group_name == group_name)
+      {
+        index = i;
+        break;
+      }
+    }
+    var updated_Groups = user.Groups;
+    updated_Groups[index].members.push(member_name);
+    User.updateOne({username},
+      {Groups : updated_Groups},(err)=>{
+        if(err)
+        {
+          console.log(err);
+        }
+        else
+        {
+          console.log("Member added successfully.")
+        }
+      })
+}
+
+const clearTransactionData = async (req,res) => 
+{
+    const {username,group_name} = req.query;
+    const user = await User.findOne({username});
+    var index = -1;
+    for(let i=0;i<user.Groups.length;i++)
+    {
+      if(user.Groups[i].group_name == group_name)
+      {
+        index = i;
+        break;
+      }
+    }
+    var updated_Groups = user.Groups;
+    updated_Groups[index].transaction_data = [];
+    User.updateOne({username},
+      {Groups : updated_Groups},(err)=>{
+        if(err)
+        {
+          console.log(err);
+        }
+        else
+        {
+          console.log("Transaction Data cleared successfully.")
+        }
+      })
+}
+
+module.exports = { addGroup, getGroups, getMembers,deleteGroup,addMember,clearTransactionData };
