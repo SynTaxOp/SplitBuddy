@@ -7,7 +7,7 @@ const addGroup = async (req, res) => {
   const new_group = new Group({
     group_name,
     members,
-    transaction_data: [{paidBy : 'Ravi',paidFor : {'Shree':200,'Kartik' : 100}},{paidBy : 'Golu',paidFor : {'Shree':200,'Kartik' : 100}}],
+    transaction_data: [],
   });
   User.updateOne({ username }, { $push: { Groups: [new_group] } }, (err) => {
     if (err) {

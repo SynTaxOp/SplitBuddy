@@ -5,7 +5,7 @@ const TransactionDiv = ({ setShowModal }) => {
   return (
     <div>
       <div className="trans-header">
-        <p className="trans-text">Transaction Logs</p>
+        <p className="trans-text">Payments Due</p>
         <Button
           variant="contained"
           className="add-icon"
