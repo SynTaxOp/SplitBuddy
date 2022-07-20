@@ -11,6 +11,8 @@ const HomePage = ({
   members,
   setMembers,
   getGroups,
+  getSplitwise,
+  getMembersList,
 }) => {
   const [showModal, setShowModal] = useState(false);
 
@@ -28,6 +30,8 @@ const HomePage = ({
           members={members}
           setMembers={setMembers}
           getGroups={getGroups}
+          getSplitwise={getSplitwise}
+          getMembersList={getMembersList}
         />
       </div>
 

@@ -8,6 +8,8 @@ const GroupSection = ({
   members,
   setMembers,
   getGroups,
+  getSplitwise,
+  getMembersList,
 }) => {
   return (
     <div className="groups-div">
@@ -39,6 +41,8 @@ const GroupSection = ({
                   username={username}
                   setMembers={setMembers}
                   getGroups={getGroups}
+                  getSplitwise={getSplitwise}
+                  getMembersList={getMembersList}
                 />
               </div>
             );

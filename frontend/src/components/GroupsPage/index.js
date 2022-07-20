@@ -6,30 +6,19 @@ import { useParams } from "react-router";
 import "./styleGroups.css";
 import TransactionDiv from "./transactionDiv";
 import TransactionModal from "./transactionModal";
-const GroupsPage = ({ members, setLoggedin, username }) => {
+const GroupsPage = ({
+  members,
+  setLoggedin,
+  username,
+  splitData,
+  getSplitwise,
+  getMembersList,
+}) => {
   const { title } = useParams();
   const [showModal, setShowModal] = useState(false);
   const [member_name, setmemberName] = useState("");
   const [showInput, setShowInput] = useState(false);
-  const [splitData, setSplitData] = useState([]);
 
-  const getSplitwise = async (username, title) => {
-    fetch(
-      "http://localhost:8080/transaction/generateSplitwise?username=" +
-        username +
-        "&title=" +
-        title,
-      {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setSplitData(data);
-      });
-  };
   const addMember = (e) => {
     e.preventDefault();
     const data = {
@@ -46,6 +35,7 @@ const GroupsPage = ({ members, setLoggedin, username }) => {
         res.json().then((data) => {
           console.log(data);
           setShowInput(false);
+          getMembersList(username, title);
         });
       } else {
         res.json().then((data) => {
@@ -104,6 +94,7 @@ const GroupsPage = ({ members, setLoggedin, username }) => {
                   variant="contained"
                   className="add-btn"
                   onClick={addMember}
+                  type="submit"
                 >
                   Confirm{" "}
                 </Button>

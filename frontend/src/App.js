@@ -10,6 +10,7 @@ function App() {
   const [isLoggedin, setLoggedin] = useState(false);
   var [groups, setGroups] = useState([]);
   var [members, setMembers] = useState([]);
+  var [splitData, setSplitData] = useState([]);
 
   const getGroups = (username) => {
     fetch("http://localhost:8080/groups/getGroups?username=" + username, {
@@ -28,6 +29,48 @@ function App() {
       });
   };
 
+  const getSplitwise = async (username, title) => {
+    fetch(
+      "http://localhost:8080/transaction/generateSplitwise?username=" +
+        username +
+        "&title=" +
+        title,
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        var output = data;
+        splitData = output;
+        setSplitData(splitData);
+      });
+  };
+  const getMembersList = async (username, title) => {
+    await fetch(
+      "http://localhost:8080/groups/getMembers?username=" +
+        username +
+        "&title=" +
+        title,
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }
+    ).then((res) => {
+      if (res.status == 200) {
+        res.json().then((data) => {
+          console.log(data.members);
+          var memberArr = data.members;
+          members = memberArr;
+          setMembers(members);
+          console.log(members);
+          getSplitwise(username, title);
+        });
+      }
+    });
+  };
   return (
     <div className="App">
       <Router>
@@ -74,6 +117,8 @@ function App() {
                   memebers={members}
                   setMembers={setMembers}
                   getGroups={getGroups}
+                  getSplitwise={getSplitwise}
+                  getMembersList={getMembersList}
                 />
               }
             ></Route>
@@ -85,6 +130,9 @@ function App() {
                   members={members}
                   setLoggedin={setLoggedin}
                   username={username}
+                  splitData={splitData}
+                  getSplitwise={getSplitwise}
+                  getMembersList={getMembersList}
                 />
               }
             ></Route>
