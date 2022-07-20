@@ -80,3 +80,96 @@
     margin-top: 2%;
     margin-bottom: 3%;
 }
+.add-mem-div{
+    text-align: center;
+
+}
+.add-mem-btn{
+    margin-top: 5% !important;
+    width: 90%;
+    background-color:#5a8a8a !important;
+    text-align: center;
+    font-weight: bold !important;
+    height: 40px;
+
+}
+.add-btn{
+    margin-top: 5% !important;
+    margin-bottom:5% !important;
+    width: 90%;
+    background-color:#5a8a8a !important;
+    text-align: center;
+    font-weight: bold !important;
+}
+.close-icon-div{
+    margin-bottom:5%;
+
+}
+.close-icon{
+    margin-left:auto;
+    float:right;
+    font-size:30px !important;
+    padding-top:10px;
+    margin-right:3%;
+    cursor: pointer;
+}
+
+.add-div{
+    margin-left:auto;
+    margin-right:auto;
+    width:90%;
+    margin-top:10%;
+    border: 1px 0px solid #5b8686;
+    box-shadow: 2px 2px 5px #5b8686;
+}
+.textfield-div{
+    width: 80%;
+    margin-left:auto !important;
+    margin-right:auto !important;
+}
+.textfield{
+   
+    text-align:center !important;
+    color:#5b8686 !important;
+}
+
+.split-data{
+    width: 90%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% auto;
+    margin-top: 2%;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: 1px 0px solid #5b8686;
+    box-shadow: 2px 2px 5px #5b8686;
+    padding-top: 10px;
+
+}
+
+.paid-btn{
+    height: 40px;
+    width: 60%;
+}
+
+.split-text{
+    text-transform: capitalize;
+    font-size: 16px;
+    font-family: 'McLaren', cursive;
+    padding-top: 5px;
+
+}
+
+.heading-div{
+    width: 90%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 5%;
+    border-bottom: 2px  solid #5b8686;
+    font-weight: bold;
+    color: #5b8686;
+}

@@ -60,7 +60,30 @@
     margin-top: 2%;
     text-align: center;
 }
-
+.groups-cards{
+    width: 50%;
+    display: grid;
+    grid-template-columns: 90% auto;
+    margin-left: auto;
+    margin-right: auto;
+    column-gap: 10px;
+    margin-bottom: 1%;
+}
+.delete-icon-div{
+    width: 100%;
+    padding: 20px;
+    height: 10vh;
+    background-color: rgb(255, 0, 0,0.2);
+    box-shadow: 2px 2px 5px rgb(255, 0, 0,0.5);
+    cursor: pointer;
+}
+.delete-icon-div:hover{
+    box-shadow: none;
+    
+}
+.delete-icon{
+    font-size: 27px !important;
+}
 .no-groups-img{
     width: 25%;
 }
@@ -89,11 +112,10 @@
     margin-top: 3%;
 }
 .card-div{
-    width: 50%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     border-bottom: 2px solid #a8cece;
-    margin-top: 1%;
     height: 10vh;
     cursor: pointer;
     box-shadow: 3px 3px 5px #a8cece;

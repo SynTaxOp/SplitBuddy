@@ -27,6 +27,7 @@ const HomePage = ({
           username={username}
           members={members}
           setMembers={setMembers}
+          getGroups={getGroups}
         />
       </div>
 
