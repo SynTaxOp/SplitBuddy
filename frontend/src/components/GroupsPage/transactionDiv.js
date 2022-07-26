@@ -2,7 +2,13 @@ import React from "react";
 import { Button } from "@mui/material";
 import "./styleGroups.css";
 import DisplayTransaction from "./displayTransaction";
-const TransactionDiv = ({ setShowModal, splitData }) => {
+const TransactionDiv = ({
+  setShowModal,
+  splitData,
+  username,
+  title,
+  getSplitwise,
+}) => {
   return (
     <div>
       <div className="trans-header">
@@ -33,7 +39,12 @@ const TransactionDiv = ({ setShowModal, splitData }) => {
           {splitData.map((ele) => {
             return (
               <div>
-                <DisplayTransaction data={ele} />
+                <DisplayTransaction
+                  data={ele}
+                  username={username}
+                  title={title}
+                  getSplitwise={getSplitwise}
+                />
               </div>
             );
           })}

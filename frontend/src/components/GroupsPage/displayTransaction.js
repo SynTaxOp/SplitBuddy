@@ -4,7 +4,7 @@ import { Modal } from "react-bootstrap";
 import Lottie from "react-lottie";
 import animationData from "../assets/confirm.json";
 import "./styleGroups.css";
-const DisplayTransaction = ({ data }) => {
+const DisplayTransaction = ({ data, username, title, getSplitwise }) => {
   const [confirm, setConfirm] = useState(false);
 
   const defaultOptions = {
@@ -16,7 +16,34 @@ const DisplayTransaction = ({ data }) => {
     },
   };
 
-  const transactionPaid = () => {};
+  const transactionPaid = async (e, data) => {
+    e.preventDefault();
+    const json = {
+      username: username,
+      group_name: title,
+      payer_name: data[1],
+      amount: data[2],
+      receiver_name: data[0],
+    };
+    console.log(json);
+    await fetch("http://localhost:8080/transaction/deleteTransaction", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(json),
+    }).then((res) => {
+      if (res.status == "200") {
+        res.json().then((data) => {
+          console.log(data);
+          onHide();
+        });
+      } else {
+        res.json().then((data) => {
+          console.log(data);
+        });
+      }
+    });
+    await getSplitwise(username, title);
+  };
   const onHide = () => {
     setConfirm(false);
   };
@@ -69,7 +96,11 @@ const DisplayTransaction = ({ data }) => {
           <Button onClick={onHide} color="error">
             Close
           </Button>
-          <Button onClick={transactionPaid} type="submit" color="success">
+          <Button
+            onClick={(e) => transactionPaid(e, data)}
+            type="submit"
+            color="success"
+          >
             <strong>Confirm</strong>
           </Button>
         </Modal.Footer>

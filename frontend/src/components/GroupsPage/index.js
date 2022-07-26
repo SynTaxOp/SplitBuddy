@@ -50,7 +50,13 @@ const GroupsPage = ({
       <div className="main-group-div">
         <div className="group-content">
           <p className="groupname-text">👭 {title} 👬</p>
-          <TransactionDiv setShowModal={setShowModal} splitData={splitData} />
+          <TransactionDiv
+            setShowModal={setShowModal}
+            splitData={splitData}
+            username={username}
+            title={title}
+            getSplitwise={getSplitwise}
+          />
         </div>
         <div className="members-div">
           <p className="member-text"> Members </p>
