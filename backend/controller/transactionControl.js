@@ -76,14 +76,20 @@ const generateSplitwise = async (req, res) => {
     paidBy: ele.paidBy,
     paidFor: ele.paidFor,
   }));
+
   console.log(splitwise_data);
   const splits = Splitwise(splitwise_data);
-  console.log(splits);
-  res.send(splits);
+  var updatedsplits = [];
+  for (let i = 0; i < splits.length; i++) {
+    if (splits[i][2] != 0) {
+      updatedsplits.push(splits[i]);
+    }
+  }
+  console.log(updatedsplits);
+  res.send(updatedsplits);
 };
 
-const deleteTransaction = async (req, res) => 
-{
+const deleteTransaction = async (req, res) => {
   const { username, group_name, payer_name, amount, receiver_name } = req.body;
 
   const user = await User.findOne({ username });
