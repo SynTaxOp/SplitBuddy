@@ -30,7 +30,7 @@ function App() {
   };
 
   const getSplitwise = async (username, title) => {
-    fetch(
+    await fetch(
       "http://localhost:8080/transaction/generateSplitwise?username=" +
         username +
         "&title=" +
@@ -47,6 +47,22 @@ function App() {
         splitData = output;
         setSplitData(splitData);
       });
+    if (splitData.length == 0) {
+      await fetch(
+        "http://localhost:8080/groups/clearTransactionData?username=" +
+          username +
+          "&group_name=" +
+          title,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
+    }
   };
   const getMembersList = async (username, title) => {
     await fetch(

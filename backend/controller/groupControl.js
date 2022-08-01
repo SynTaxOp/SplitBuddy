@@ -127,7 +127,7 @@ const clearTransactionData = async (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log("Transaction Data cleared successfully.");
+      res.status(200).json({ msg: "Transaction Data cleared successfully." });
     }
   });
 };

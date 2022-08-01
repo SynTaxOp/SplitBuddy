@@ -5,8 +5,7 @@ const registerUser = async (req, res) => {
   const userExist = await User.findOne({ email });
   const userExist1 = await User.findOne({ username });
   if (userExist || userExist1) {
-    res.status(400);
-    throw new Error("User already exist");
+    res.status(400).json({ msg: "User already exist" });
   }
   const user = await new User({
     name,
@@ -22,7 +21,7 @@ const registerUser = async (req, res) => {
     }
   });
   if (user) {
-    res.status(201).json({
+    res.status(200).json({
       _id: user._id,
       name: user.name,
     });
