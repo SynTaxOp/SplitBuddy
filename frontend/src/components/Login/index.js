@@ -20,7 +20,7 @@ const Login = ({ setLoggedin, setUsername, getGroups, setLoader }) => {
       username,
       password,
     };
-    fetch("http://localhost:8080/users/login", {
+    fetch("/users/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

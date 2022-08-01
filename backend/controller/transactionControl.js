@@ -4,7 +4,7 @@ const Splitwise = require("splitwise-js-map");
 const addTransaction = async (req, res) => {
   const { username, group_name, payer_name, amount, payees } = req.body;
 
-  var amt = amount / payees.length;
+  var amt = Math.ceil(amount / payees.length);
   console.log("Amount", amt);
   const user = await User.findOne({ username });
   var group_idx = 0;

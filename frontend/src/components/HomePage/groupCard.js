@@ -20,7 +20,7 @@ const GroupCard = ({
 
   const deleteGroup = async (title, username) => {
     await fetch(
-      "http://localhost:8080/groups/deleteGroup?username=" +
+      "/groups/deleteGroup?username=" +
         username +
         "&title=" +
         title,

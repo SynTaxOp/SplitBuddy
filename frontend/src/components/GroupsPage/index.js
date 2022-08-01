@@ -26,7 +26,7 @@ const GroupsPage = ({
       group_name: title,
       member_name: member_name,
     };
-    fetch("http://localhost:8080/groups/addMember", {
+    fetch("/groups/addMember", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

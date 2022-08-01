@@ -29,7 +29,7 @@ const Signup = ({ setUsername, setLoggedin, getGroups, setLoader }) => {
         username: username,
         password: password,
       };
-      fetch("http://localhost:8080/users/register", {
+      fetch("/users/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

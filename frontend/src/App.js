@@ -13,7 +13,7 @@ function App() {
   var [splitData, setSplitData] = useState([]);
 
   const getGroups = (username) => {
-    fetch("http://localhost:8080/groups/getGroups?username=" + username, {
+    fetch("/groups/getGroups?username=" + username, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -31,7 +31,7 @@ function App() {
 
   const getSplitwise = async (username, title) => {
     await fetch(
-      "http://localhost:8080/transaction/generateSplitwise?username=" +
+      "/transaction/generateSplitwise?username=" +
         username +
         "&title=" +
         title,
@@ -49,7 +49,7 @@ function App() {
       });
     if (splitData.length == 0) {
       await fetch(
-        "http://localhost:8080/groups/clearTransactionData?username=" +
+        "/groups/clearTransactionData?username=" +
           username +
           "&group_name=" +
           title,
@@ -66,7 +66,7 @@ function App() {
   };
   const getMembersList = async (username, title) => {
     await fetch(
-      "http://localhost:8080/groups/getMembers?username=" +
+      "/groups/getMembers?username=" +
         username +
         "&title=" +
         title,

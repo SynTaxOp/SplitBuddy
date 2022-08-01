@@ -56,7 +56,7 @@ const TransactionModal = ({
     };
     setpayees([]);
     if (data.payer_name != "" && data.payees.length > 0) {
-      await fetch("http://localhost:8080/transaction/addTransaction", {
+      await fetch("/transaction/addTransaction", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

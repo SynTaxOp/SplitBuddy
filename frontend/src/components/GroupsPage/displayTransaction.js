@@ -26,7 +26,7 @@ const DisplayTransaction = ({ data, username, title, getSplitwise }) => {
       receiver_name: data[0],
     };
     console.log(json);
-    await fetch("http://localhost:8080/transaction/deleteTransaction", {
+    await fetch("/transaction/deleteTransaction", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(json),
