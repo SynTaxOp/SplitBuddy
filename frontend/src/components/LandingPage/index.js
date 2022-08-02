@@ -29,6 +29,7 @@ const LandingPage = ({
     <>
       {!loader ? (
         <div className="main-container">
+          <p className="brand">SPLITBUDDY</p>
           <div className="tab-container">
             <TabContext value={value}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>

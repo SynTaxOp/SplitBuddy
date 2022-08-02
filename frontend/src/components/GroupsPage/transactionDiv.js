@@ -10,7 +10,7 @@ const TransactionDiv = ({
   getSplitwise,
 }) => {
   return (
-    <div>
+    <div className="trans-div">
       <div className="trans-header">
         <p className="trans-text">Payments Due</p>
         <Button

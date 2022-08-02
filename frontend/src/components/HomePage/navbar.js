@@ -1,12 +1,19 @@
 import React from "react";
 import { Navbar, Nav, Form, FormControl, Container } from "react-bootstrap";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styleHome.css";
 
 const NavbarSec = ({ setLoggedin }) => {
-  const logout = () => setLoggedin(false);
+  const navigate = useNavigate();
+
+  const logout = () => {
+    setLoggedin(false);
+    navigate("/");
+  };
   return (
     <div>
       <Navbar className="main-navbar" expand="lg">
