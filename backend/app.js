@@ -90,7 +90,7 @@ const group3 = new Group({
 // const Split = Splitwise(obj2)
 // console.log("Split", Split)
 
-const __dirname = path.resolve();
+__dirname = path.resolve();
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/build")));
