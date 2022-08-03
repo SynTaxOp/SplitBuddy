@@ -9,6 +9,7 @@ const connectDB = require("./config/db_connect");
 dotenv.config();
 connectDB();
 
+const path =require('path');
 const User = require("./models/userData");
 const userRouter = require("./routes/userRouter");
 const groupRouter = require("./routes/groupRouter");
@@ -88,6 +89,20 @@ const group3 = new Group({
 // Splitwise Testing
 // const Split = Splitwise(obj2)
 // console.log("Split", Split)
+
+const __dirname = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+  );
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running..");
+  });
+}
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
