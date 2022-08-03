@@ -113,6 +113,6 @@ app.use("/users", userRouter);
 app.use("/groups", groupRouter);
 app.use("/transaction",transactionRouter);
 
-
+console.log("Hello");
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, console.log(`Running at port ${PORT}`));
