@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/SynTaxOp/SplitBuddy/issues"
   },
-  "homepage": "https://github.com/SynTaxOp/SplitBuddy#readme",
+  "homepage": "https://splitbuddy.herokuapp.com",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
