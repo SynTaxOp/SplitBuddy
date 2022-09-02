@@ -7,6 +7,9 @@ The app makes keeping tab on expenses easy and allow fair division among friends
 <li>Confirm transactions once paid</li>
 </ul>
 
+<strong>Visit at:</strong> https://splitbuddy.herokuapp.com/
+
+
 # Tech Used
 <ul>
 <li>Node Js</li>
